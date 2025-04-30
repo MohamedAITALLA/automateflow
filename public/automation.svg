@@ -1,0 +1,63 @@
+
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <pattern id="grid" patternUnits="userSpaceOnUse" width="80" height="80">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="flow-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0)"/>
+      <stop offset="50%" stop-color="rgba(255, 255, 255, 0.5)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0)"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Grid -->
+  <rect width="100%" height="100%" fill="url(#grid)" />
+  
+  <!-- Nodes -->
+  <circle cx="150" cy="200" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="350" cy="150" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="550" cy="250" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="450" cy="350" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="650" cy="400" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="250" cy="400" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="150" cy="500" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="350" cy="550" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="550" cy="500" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  <circle cx="650" cy="600" r="15" fill="rgba(255, 255, 255, 0.2)" stroke="rgba(255, 255, 255, 0.6)" stroke-width="2" />
+  
+  <!-- Connecting Lines -->
+  <path d="M 150 200 C 200 180, 300 170, 350 150" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 350 150 C 400 180, 500 220, 550 250" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 550 250 C 520 280, 480 320, 450 350" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 450 350 C 500 360, 600 380, 650 400" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 450 350 C 400 360, 300 380, 250 400" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 250 400 C 220 430, 170 470, 150 500" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 150 500 C 200 520, 300 540, 350 550" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 350 550 C 400 540, 500 520, 550 500" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+  <path d="M 550 500 C 580 530, 620 570, 650 600" stroke="rgba(255, 255, 255, 0.3)" stroke-width="2" fill="none" />
+
+  <!-- Animated Flow Lines -->
+  <path d="M 150 200 C 200 180, 300 170, 350 150" stroke="url(#flow-line-gradient)" stroke-width="2.5" fill="none" class="flow-line" />
+  <path d="M 350 150 C 400 180, 500 220, 550 250" stroke="url(#flow-line-gradient)" stroke-width="2.5" fill="none" class="flow-line" />
+  <path d="M 450 350 C 500 360, 600 380, 650 400" stroke="url(#flow-line-gradient)" stroke-width="2.5" fill="none" class="flow-line" />
+  <path d="M 150 500 C 200 520, 300 540, 350 550" stroke="url(#flow-line-gradient)" stroke-width="2.5" fill="none" class="flow-line" />
+  <path d="M 350 550 C 400 540, 500 520, 550 500" stroke="url(#flow-line-gradient)" stroke-width="2.5" fill="none" class="flow-line" />
+
+  <!-- Data Packets -->
+  <circle cx="200" cy="185" r="4" fill="white" class="data-packet">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 0 0 C 50 -20, 150 -30, 200 -50" />
+  </circle>
+  <circle cx="400" cy="200" r="4" fill="white" class="data-packet">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 0 0 C 50 30, 150 70, 200 100" />
+  </circle>
+  <circle cx="500" cy="360" r="4" fill="white" class="data-packet">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 0 0 C 50 10, 150 30, 200 50" />
+  </circle>
+  <circle cx="200" cy="520" r="4" fill="white" class="data-packet">
+    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 0 0 C 50 20, 150 40, 200 50" />
+  </circle>
+  <circle cx="400" cy="540" r="4" fill="white" class="data-packet">
+    <animateMotion dur="3.2s" repeatCount="indefinite" path="M 0 0 C 50 -10, 150 -30, 200 -50" />
+  </circle>
+</svg>
