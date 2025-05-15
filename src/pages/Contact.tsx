@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from '@/hooks/use-toast';
 import Layout from '@/components/Layout';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,7 +40,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const webhookUrl = 'https://n8n-main.qwfbje.easypanel.host/webhook-test/b76ad845-4e91-4ff2-972e-1b99896215bb';
+    const webhookUrl = 'https://n8n-main.qwfbje.easypanel.host/webhook/b76ad845-4e91-4ff2-972e-1b99896215bb';
     
     toast({
       title: "Submitting...",
@@ -137,7 +138,7 @@ const Contact = () => {
                     <Mail className="h-6 w-6 mr-4 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-blue-100">contact@automateflow.com</p>
+                      <p className="text-blue-100">contact@automateflow.online</p>
                     </div>
                   </div>
                   
@@ -275,10 +276,10 @@ const Contact = () => {
                         className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-400"
                       >
                         <option value="">Select budget range</option>
-                        <option value="Under $5,000">Under $5,000</option>
+                        <option value="Under $2,000">Under $2,000</option>
+                        <option value="$2,000 - $5,000">$2,000 - $5,000</option>
                         <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                        <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-                        <option value="$25,000+">$25,000+</option>
+                        <option value="$10,000+">$10,000+</option>
                       </select>
                     </div>
                     
@@ -351,7 +352,7 @@ const Contact = () => {
                       required
                     />
                     <label htmlFor="privacyAgreed" className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                      I agree to the <a href="#" className="text-primary hover:underline">Privacy Policy</a> and consent to having my data processed to respond to my inquiry.
+                      I agree to the <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> and consent to having my data processed to respond to my inquiry.
                     </label>
                   </div>
                   

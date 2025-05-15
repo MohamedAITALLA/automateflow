@@ -9,13 +9,13 @@ import { useEffect } from 'react';
 
 const Services = () => {
   const [activeService, setActiveService] = useState<string | null>(null);
-  
+
   // Handle hash in URL
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash && services.some(service => service.id === hash)) {
       setActiveService(hash);
-      
+
       // Scroll to the service section
       setTimeout(() => {
         const element = document.getElementById(hash);
@@ -47,12 +47,11 @@ const Services = () => {
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           {services.map((service, index) => (
-            <div 
+            <div
               id={service.id}
               key={service.id}
-              className={`py-12 ${
-                index < services.length - 1 ? 'border-b border-gray-200 dark:border-gray-800' : ''
-              }`}
+              className={`py-12 ${index < services.length - 1 ? 'border-b border-gray-200 dark:border-gray-800' : ''
+                }`}
             >
               <div className="flex flex-col md:flex-row gap-12">
                 <div className="md:w-1/2">
@@ -63,7 +62,7 @@ const Services = () => {
                   <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                     {service.description}
                   </p>
-                  
+
                   <h3 className="text-xl font-semibold mb-4">Key Benefits</h3>
                   <ul className="space-y-3 mb-8">
                     {service.benefits.map((benefit, idx) => (
@@ -73,17 +72,17 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <Button asChild>
                     <Link to="/contact">Request a Demo</Link>
                   </Button>
                 </div>
-                
+
                 <div className="md:w-1/2">
                   <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 h-full">
                     <h3 className="text-xl font-semibold mb-4">Real-World Example</h3>
                     <p className="text-gray-700 dark:text-gray-300 mb-8">{service.useCase}</p>
-                    
+
                     <div className="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-sm">
                       <h4 className="text-lg font-medium mb-3">Typical Implementation Timeline</h4>
                       <div className="space-y-4">
@@ -94,7 +93,7 @@ const Services = () => {
                         <div className="w-full bg-gray-200 dark:bg-gray-600 h-2 rounded-full">
                           <div className="bg-primary h-2 rounded-full" style={{ width: '20%' }}></div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center">
                           <span className="text-gray-600 dark:text-gray-400">Development & Testing</span>
                           <span className="font-medium">2-4 Weeks</span>
@@ -102,7 +101,7 @@ const Services = () => {
                         <div className="w-full bg-gray-200 dark:bg-gray-600 h-2 rounded-full">
                           <div className="bg-primary h-2 rounded-full" style={{ width: '40%' }}></div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center">
                           <span className="text-gray-600 dark:text-gray-400">Deployment & Training</span>
                           <span className="font-medium">1-2 Weeks</span>
@@ -110,7 +109,7 @@ const Services = () => {
                         <div className="w-full bg-gray-200 dark:bg-gray-600 h-2 rounded-full">
                           <div className="bg-primary h-2 rounded-full" style={{ width: '20%' }}></div>
                         </div>
-                        
+
                         <div className="flex justify-between items-center">
                           <span className="text-gray-600 dark:text-gray-400">Ongoing Support</span>
                           <span className="font-medium">Continuous</span>
@@ -134,10 +133,10 @@ const Services = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What My Clients Say</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-              Hear from clients who have transformed their operations with my n8n automation expertise.
+              Hear from Moroccan startups who have transformed their operations with my n8n automation expertise.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
@@ -150,12 +149,12 @@ const Services = () => {
                 </div>
               </div>
               <blockquote className="text-gray-700 dark:text-gray-300 mb-4">
-                "The AI-powered email responder has transformed our customer service. Response times dropped from hours to seconds, and our team can focus on complex issues instead of routine inquiries."
+                "The AI-powered email responder has revolutionized our customer service at SouqTech. Response times dropped from hours to seconds, allowing our team to focus on expanding our marketplace across Casablanca's artisan communities and traditional souks."
               </blockquote>
-              <div className="font-semibold">Sarah Johnson</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">Director of Customer Success, TechCorp</div>
+              <div className="font-semibold">Karim El Fassi</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Founder, SouqTech</div>
             </div>
-            
+
             <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
                 <div className="flex flex-shrink-0">
@@ -167,12 +166,12 @@ const Services = () => {
                 </div>
               </div>
               <blockquote className="text-gray-700 dark:text-gray-300 mb-4">
-                "The workflow automation solution has eliminated our inventory synchronization issues completely. We've reduced manual labor by 94% and completely eliminated overselling incidents."
+                "The workflow automation solution has transformed our EdTech platform at TaalimConnect. We've reduced manual processes by 90% and can now focus on scaling our Arabic-French-Amazigh trilingual educational content across rural communities in the Atlas Mountains."
               </blockquote>
-              <div className="font-semibold">Michael Chen</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">Operations Manager, Global Retail</div>
+              <div className="font-semibold">Nadia Bensouda</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">CEO, TaalimConnect</div>
             </div>
-            
+
             <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-4">
                 <div className="flex flex-shrink-0">
@@ -184,14 +183,15 @@ const Services = () => {
                 </div>
               </div>
               <blockquote className="text-gray-700 dark:text-gray-300 mb-4">
-                "Our AI sales assistant has been a game-changer. It qualifies leads, handles initial outreach, and schedules meetings automatically. We've seen a 45% increase in qualified demos with the same team size."
+                "Our AI logistics assistant built with n8n has been transformative for MaghrebExpress. It optimizes delivery routes across Tangier, Fes, and Marrakech, helping us connect small businesses with customers while reducing our carbon footprint by 30%."
               </blockquote>
-              <div className="font-semibold">Amanda Rodriguez</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">VP of Sales, SaaS Solutions Inc.</div>
+              <div className="font-semibold">Youssef Amrani</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Co-founder, MaghrebExpress</div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

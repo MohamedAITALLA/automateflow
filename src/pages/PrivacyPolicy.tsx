@@ -150,10 +150,10 @@ const PrivacyPolicy = () => {
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg mt-4">
                   <p className="text-gray-700 dark:text-gray-300">
-                    <span className="font-medium">Email:</span> privacy@automateflow.com
+                    <span className="font-medium">Email:</span> privacy@automateflow.online
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 mt-2">
-                    <span className="font-medium">Address:</span> 123 Automation Street, Tech City, TC 12345
+                    <span className="font-medium">Address:</span> LOT Mhamid 2 N 1590 Marrakech Morocco
                   </p>
                 </div>
               </section>
