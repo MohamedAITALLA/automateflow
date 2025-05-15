@@ -24,7 +24,7 @@ const CaseStudies = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Client Success Stories</h1>
             <p className="text-xl text-blue-100 mb-6">
-              Explore how our automation solutions have helped businesses across industries improve efficiency and drive growth.
+              Explore how my n8n automation expertise has helped clients across industries improve efficiency and drive growth.
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@ const CaseStudies = () => {
                         </p>
                         <WorkflowVisualization 
                           workflow={sampleWorkflows[caseStudy.workflowId]} 
-                          height="500px"
+                          height="100%"
                         />
                       </div>
                     </div>
@@ -134,13 +134,13 @@ const CaseStudies = () => {
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Be Our Next Success Story?</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Be My Next Success Story?</h2>
             <p className="text-xl text-blue-100 mb-8">
-              Let's discuss how we can create a custom automation solution for your business needs.
+              Let's discuss how my n8n automation expertise can solve your specific business challenges.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg" className="bg-white text-primary hover:bg-blue-50">
-                <Link to="/contact">Schedule a Consultation</Link>
+                <Link to="/contact">Contact Me</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-primary hover:bg-white/10">
                 <Link to="/templates">Browse Templates</Link>

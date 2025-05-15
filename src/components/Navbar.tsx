@@ -12,21 +12,20 @@ const Navbar = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
+    let isMounted = true;
     const handleScroll = () => {
+      if (!isMounted) return;
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(scrollPosition > 10);
     };
 
-    // Initial check for scroll position
     handleScroll();
-    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      isMounted = false;
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [location.pathname]);
 
   // Close menu when route changes
   useEffect(() => {
@@ -38,14 +37,18 @@ const Navbar = () => {
     { name: 'Services', path: '/services' },
     { name: 'Case Studies', path: '/case-studies' },
     { name: 'Templates', path: '/templates' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'About Me', path: '/about-us' },
+    { name: 'Contact Me', path: '/contact' },
+  ];
+  
+  const footerLinks = [
+    { name: 'Privacy Policy', path: '/privacy-policy' },
+    { name: 'Terms of Service', path: '/terms-of-service' },
   ];
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-md' : 'bg-primary/90 backdrop-blur-sm'
-      }`}
+      className={`fixed w-full z-50 transition-colors duration-300 ${scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-md' : 'bg-primary/90 backdrop-blur-sm'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-20">
@@ -81,13 +84,7 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
-            <div className="ml-3">
-              <Button asChild size="sm" className={scrolled ? 'bg-primary hover:bg-primary/90' : 'bg-white text-primary hover:bg-blue-50'}>
-                <Link to="/contact" className="whitespace-nowrap">
-                  Get Started
-                </Link>
-              </Button>
-            </div>
+        
           </div>
 
           {/* Mobile Navigation Button */}
@@ -101,7 +98,7 @@ const Navbar = () => {
               }`}
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={()  => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -135,13 +132,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4">
-              <Button asChild className="w-full">
-                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                  Get Started
-                </Link>
-              </Button>
-            </div>
+           
           </div>
         </div>
       )}

@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { 
   ArrowDown, 
+  Clipboard, 
   Clock, 
   Download, 
   Filter, 
@@ -29,9 +30,26 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const Templates = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
+  const [expandedTemplates, setExpandedTemplates] = useState<Set<string>>(new Set());
   const [sortBy, setSortBy] = useState<'popular' | 'newest'>('popular');
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const isMobile = useIsMobile();
+  
+  // Function to copy workflow JSON to clipboard
+  const copyToClipboard = (workflowId: string, templateId: string) => {
+    const workflowData = templateWorkflows[workflowId];
+    const jsonString = JSON.stringify(workflowData, null, 2);
+    
+    navigator.clipboard.writeText(jsonString)
+      .then(() => {
+        setCopiedId(templateId);
+        // Reset copied status after 2 seconds
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  };
 
   // Filter templates based on selected category and search query
   const filteredTemplates = templates
@@ -42,10 +60,10 @@ const Templates = () => {
     )
     .sort((a, b) => sortBy === 'popular' ? b.downloads - a.downloads : b.rating - a.rating);
 
-  // Find the currently selected template
-  const currentTemplate = selectedTemplate 
-    ? templates.find(t => t.id === selectedTemplate) 
-    : null;
+  // This is no longer needed with the Set approach
+  // const currentTemplate = selectedTemplate 
+  //   ? templates.find(t => t.id === selectedTemplate) 
+  //   : null;
 
   return (
     <Layout>
@@ -55,7 +73,7 @@ const Templates = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Free Automation Templates</h1>
             <p className="text-base md:text-xl text-blue-100 mb-6">
-              Browse and download our ready-to-use n8n workflow templates to kickstart your automation journey.
+              Browse and download my ready-to-use n8n workflow templates created from my professional experience as an automation specialist.
             </p>
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -173,7 +191,7 @@ const Templates = () => {
                 <div 
                   key={template.id} 
                   className={`bg-white dark:bg-gray-900 border ${
-                    selectedTemplate === template.id 
+                    expandedTemplates.has(template.id) 
                       ? 'border-primary' 
                       : 'border-gray-200 dark:border-gray-700'
                   } rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all`}
@@ -226,19 +244,25 @@ const Templates = () => {
                         {template.difficulty}
                       </div>
                       <Button
-                        variant={selectedTemplate === template.id ? "default" : "outline"}
+                        variant={expandedTemplates.has(template.id) ? "default" : "outline"}
                         size={isMobile ? "xs" : "sm"}
                         className="ml-auto"
-                        onClick={() => setSelectedTemplate(
-                          selectedTemplate === template.id ? null : template.id
-                        )}
+                        onClick={() => {
+                          const newExpandedTemplates = new Set(expandedTemplates);
+                          if (expandedTemplates.has(template.id)) {
+                            newExpandedTemplates.delete(template.id);
+                          } else {
+                            newExpandedTemplates.add(template.id);
+                          }
+                          setExpandedTemplates(newExpandedTemplates);
+                        }}
                       >
-                        {selectedTemplate === template.id ? 'Hide Details' : 'View Details'}
+                        {expandedTemplates.has(template.id) ? 'Hide Details' : 'View Details'}
                       </Button>
                     </div>
                   </div>
                   
-                  {selectedTemplate === template.id && (
+                  {expandedTemplates.has(template.id) && (
                     <div className="p-4 md:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                       <h4 className="font-medium mb-3 text-sm md:text-base">Workflow Preview</h4>
                       <WorkflowVisualization 
@@ -247,13 +271,47 @@ const Templates = () => {
                         className="mb-4"
                       />
                       <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-3 md:space-y-0">
-                        <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
-                          Compatible with n8n version 1.89.0+
+                        <div className="text-[10px] md:text-xs text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full inline-flex items-center">
+                          <span className="whitespace-nowrap">n8n version 1.89.0+</span>
                         </div>
-                        <Button size={isMobile ? "sm" : "default"}>
-                          <Download className="h-4 w-4 mr-2" />
-                          Download
-                        </Button>
+                        <div className="flex space-x-2">
+                          <Button 
+                            size={isMobile ? "sm" : "default"}
+                            variant="outline"
+                            onClick={() => copyToClipboard(template.workflowId, template.id)}
+                            className={copiedId === template.id ? "bg-green-50 text-green-600 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800" : ""}
+                          >
+                            <Clipboard className="h-4 w-4 mr-2" />
+                            {copiedId === template.id ? "Copied!" : "Copy"}
+                          </Button>
+                          <Button 
+                            size={isMobile ? "sm" : "default"}
+                            onClick={() => {
+                              // Create a JSON blob from the workflow data
+                              const workflowData = templateWorkflows[template.workflowId];
+                              const jsonString = JSON.stringify(workflowData, null, 2);
+                              const blob = new Blob([jsonString], { type: 'application/json' });
+                              
+                              // Create a download link and trigger it
+                              const url = URL.createObjectURL(blob);
+                              const a = document.createElement('a');
+                              a.href = url;
+                              a.download = `${template.title.toLowerCase().replace(/\s+/g, '-')}-workflow.json`;
+                              document.body.appendChild(a);
+                              a.click();
+                              
+                              // Clean up
+                              setTimeout(() => {
+                                document.body.removeChild(a);
+                                URL.revokeObjectURL(url);
+                              }, 100);
+                            }}
+                            className="min-w-[110px] md:min-w-[130px]"
+                          >
+                            <Download className="h-4 w-4 mr-2" />
+                            Download
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -268,9 +326,9 @@ const Templates = () => {
       <section className="py-8 md:py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">How to Use Our Templates</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">How to Use These Templates</h2>
             <p className="text-sm md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Get up and running with our n8n workflow templates in minutes.
+              Get up and running with these n8n workflow templates in minutes.
             </p>
           </div>
           
@@ -282,7 +340,7 @@ const Templates = () => {
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold mb-2">1. Download Template</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Browse our library and download the JSON file for your desired automation workflow.
+                  Browse the library and download the JSON file for your desired automation workflow.
                 </p>
               </div>
               
@@ -326,7 +384,7 @@ const Templates = () => {
             <div className="mb-6 md:mb-0 md:pr-4">
               <h2 className="text-2xl md:text-3xl font-bold mb-3">Need a Custom Solution?</h2>
               <p className="text-blue-100 text-base md:text-xl max-w-2xl">
-                Our templates are just the beginning. Let us build a tailored automation solution for your specific business needs.
+                These templates are just the beginning. I can build a tailored automation solution for your specific business needs.
               </p>
             </div>
             <Button asChild size={isMobile ? "default" : "lg"} className="bg-white text-primary hover:bg-blue-50 whitespace-nowrap">

@@ -32,9 +32,9 @@ const Services = () => {
       <section className="pt-32 pb-20 bg-gradient-to-br from-primary to-blue-700 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Automation Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Automation Services</h1>
             <p className="text-xl text-blue-100 mb-8">
-              Transform your business operations with our comprehensive suite of AI-powered automation solutions.
+              Transform your business operations with my specialized n8n automation solutions and expertise.
             </p>
             <Button asChild size="lg" className="bg-white text-primary hover:bg-blue-50">
               <Link to="/contact">Schedule a Consultation</Link>
@@ -132,9 +132,9 @@ const Services = () => {
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
+            <h2 className="text-3xl font-bold mb-4">What My Clients Say</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-              Hear from businesses that have transformed their operations with our automation solutions.
+              Hear from clients who have transformed their operations with my n8n automation expertise.
             </p>
           </div>
           
@@ -199,11 +199,11 @@ const Services = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
             <p className="text-xl text-blue-100 mb-8">
-              Schedule a personalized demo to see how our automation solutions can benefit your specific business needs.
+              Let's discuss how my n8n automation expertise can help streamline your business processes.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg" className="bg-white text-primary hover:bg-blue-50">
-                <Link to="/contact">Request Demo</Link>
+                <Link to="/contact">Contact Me</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-primary hover:bg-white/10">
                 <Link to="/templates" className="text-primary">Explore Templates</Link>

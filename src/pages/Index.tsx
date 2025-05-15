@@ -27,14 +27,14 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="lg:w-1/2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                AI-Powered Workflow Automation for Modern Business
+                Mohamed AIT ALLA
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-blue-100">
-                Build intelligent automation solutions with n8n workflows and custom AI agents that transform how your business operates.
+                Software Engineer specializing in n8n workflow automation and custom AI solutions that transform how your business operates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-blue-50">
-                  <Link to="/contact">Get Started</Link>
+                  <Link to="/contact">Contact Me</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white text-primary hover:bg-white/10">
                   <Link to="/templates">Explore Templates</Link>
@@ -44,7 +44,7 @@ const Index = () => {
             <div className="lg:w-1/2 rounded-lg overflow-hidden shadow-2xl">
               <WorkflowVisualization 
                 workflow={sampleWorkflows['support-automation']} 
-                height="400px"
+                height="100%"
               />
             </div>
           </div>
@@ -53,7 +53,7 @@ const Index = () => {
         <div className="container mx-auto px-4 mt-16 relative z-10">
           <div className="flex flex-wrap justify-center gap-8">
             <div className="flex items-center">
-              <div className="text-4xl font-bold mr-2">200+</div>
+              <div className="text-4xl font-bold mr-2">50+</div>
               <div className="text-blue-100">Automation<br />Projects</div>
             </div>
             <div className="flex items-center">
@@ -72,9 +72,9 @@ const Index = () => {
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Automation Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Automation Services</h2>
             <p className="text-gray-600 dark:text-gray-400 text-xl max-w-2xl mx-auto">
-              Comprehensive automation solutions designed to enhance efficiency, reduce costs, and drive growth across your organization.
+              As an experienced n8n automation specialist, I create custom solutions to enhance efficiency, reduce costs, and drive growth for your business.
             </p>
           </div>
           
@@ -107,7 +107,7 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Templates & Case Studies</h2>
             <p className="text-gray-600 dark:text-gray-400 text-xl max-w-2xl mx-auto">
-              Discover our most popular automation templates and success stories.
+              Discover my most popular automation templates and success stories.
             </p>
           </div>
           

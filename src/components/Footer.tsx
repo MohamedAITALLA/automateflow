@@ -18,7 +18,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 max-w-xs">
-              Empowering businesses with AI-powered workflow automation solutions and custom AI agents.
+              Personal portfolio of Mohamed AIT ALLA, specializing in n8n workflow automation and custom AI solutions.
             </p>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">
@@ -58,26 +58,25 @@ const Footer = () => {
             <ul className="mt-4 space-y-2">
               <li><Link to="/templates" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Templates Library</Link></li>
               <li><Link to="/case-studies" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Case Studies</Link></li>
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Blog</a></li>
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Documentation</a></li>
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">FAQ</a></li>
+              <li><a target='_blank' href="https://docs.n8n.io" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Documentation</a></li>
+              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">FAQ</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Company</h3>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">About</h3>
             <ul className="mt-4 space-y-2">
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">About Us</a></li>
-              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Contact</Link></li>
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Terms of Service</a></li>
+              <li><Link to="/about-us" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">About Me</Link></li>
+              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Contact Me</Link></li>
+              <li><Link to="/privacy-policy" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service" className="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © {currentYear} AutomateFlow. All rights reserved.
+            © {currentYear} Mohamed AIT ALLA | AutomateFlow. All rights reserved.
           </p>
         </div>
       </div>
