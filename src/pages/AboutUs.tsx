@@ -40,7 +40,7 @@ const AboutUs = () => {
       name: 'Mohamed AIT ALLA',
       position: 'Software Engineer & Automation Specialist',
       bio: 'Experienced software engineer with extensive expertise in n8n workflow automation and building custom AI-powered solutions.',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&h=256&q=80'
+      image: '/profile.jpg'
     }
   ];
   
